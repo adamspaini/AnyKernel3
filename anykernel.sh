@@ -4,7 +4,10 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=SkylineKernel
+kernel.string=GoreKernel
+kernel.made=adams4d13
+kernel.version=4.14.3XX
+message.word=Flashing Done, You can now reboot.
 do.devicecheck=1
 do.modules=0
 do.systemless=1
