@@ -479,13 +479,28 @@ if [ -f banner ]; then
 fi;
 
 KERNEL_STRING="$(file_getprop anykernel.sh kernel.string)";
-ui_print "$KERNEL_STRING";
+KERNEL_STRING="$(file_getprop anykernel.sh kernel.string)";
+KERNEL_FOR="$(file_getprop anykernel.sh kernel.for)";
+KERNEL_COMPILER="$(file_getprop anykernel.sh kernel.compiler)";
+KERNEL_MADE="$(file_getprop anykernel.sh kernel.made)";
+KERNEL_VERSION="$(file_getprop anykernel.sh kernel.version)";
+BUILD_DATE=$(date +%Y-%m-%d)
+MESSAGE_WORD="$(file_getprop anykernel.sh message.word)";
+DEVICE_NAME="$(file_getprop anykernel.sh device.name3)";
+ui_print "_________________________________________________" " ";
+ui_print "-- Kernel Name    : $KERNEL_STRING";
+ui_print "-- Kernel Version : $KERNEL_VERSION";
+ui_print "-- Compiler       : $KERNEL_COMPILER";
+ui_print "-- Device         : vayu/bhima";
+ui_print "-- Build Date     : $BUILD_DATE";
+ui_print "-- Maintainer     : $KERNEL_MADE";
+ui_print "_________________________________________________" " ";
 if [ -f version ]; then
   ui_print " ";
   ui_printfile version;
   ui_print " ";
 fi;
-ui_print " " "AnyKernel3 by osm0sis @ xda-developers" " ";
+ui_print "- Preparing Environment Setup ...";
 grep -oE 'AK_BASE.*' META-INF/com/google/android/updater-script >&2;
 ui_print " ";
 
@@ -495,7 +510,7 @@ do_devicecheck;
 do_versioncheck;
 do_levelcheck;
 
-ui_print "Installing...";
+ui_print "Flashing GoreKernel (NonKernelSU) Kernel...";
 # hack to maintain support for anykernel.sh files that weren't updated correctly along with the AK core
 CORE=$(grep -oE 'ak.*core.sh' anykernel.sh);
 [ -f tools/$CORE ] || ln -s $AKHOME/tools/ak*-core.sh $AKHOME/tools/$CORE;
@@ -507,13 +522,14 @@ fi;
 do_modules;
 
 debugging;
-ui_print " ";
 restore_env;
 
 if [ "$(file_getprop anykernel.sh do.cleanup)" == 1 ]; then
   cleanup;
 fi;
 
-ui_print " " "Done!";
+ui_print "- Done";
+ui_print " " "_________________________________________________";
+ui_print " " "$MESSAGE_WORD" "_________________________________________________" " ";
 export PATH="$OLD_PATH";
 unset OLD_PATH OUTFD ZIPFILE;
