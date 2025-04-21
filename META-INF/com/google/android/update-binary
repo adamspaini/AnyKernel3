@@ -510,7 +510,7 @@ do_devicecheck;
 do_versioncheck;
 do_levelcheck;
 
-ui_print "Flashing GoreKernel (NonKernelSU) Kernel...";
+ui_print "Flashing GoreKernel (KernelSU Next Only) Kernel...";
 # hack to maintain support for anykernel.sh files that weren't updated correctly along with the AK core
 CORE=$(grep -oE 'ak.*core.sh' anykernel.sh);
 [ -f tools/$CORE ] || ln -s $AKHOME/tools/ak*-core.sh $AKHOME/tools/$CORE;
