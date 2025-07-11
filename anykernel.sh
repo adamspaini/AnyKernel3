@@ -19,7 +19,7 @@ device.name2=bhima
 device.name3=
 device.name4=
 device.name5=
-supported.versions=11.0-15.0
+supported.versions=11.0-16.0
 supported.patchlevels=
 '; } # end properties
 
@@ -28,7 +28,7 @@ ui_print "- Kernel Name : GoreKernel"
 ui_print "- Kernel Version : 4.14.3XX"
 ui_print "- Compiler : Crdroid Clang"
 ui_print "- Device : vayu/bhima"
-ui_print "- Build Date : 2025-04-19"
+ui_print "- Build Date : 19-04-2025"
 ui_print "- Maintainer : adams4d13"
 ui_print " "
 ui_print "- Preparing Environment Setup ..."
